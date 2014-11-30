@@ -46,7 +46,7 @@ namespace SystemInformationLibrary
                 float totalVidRam_mb = (totalVidRam_b / 1024f) / 1024f;
                 string mb_gb = string.Format("{1} GB ({0} MB)", totalRam_mb, Math.Round(totalRam_mb / 1024f, 2));
                 //
-                string proc_FINAL = string.Format("{0} @ {1}ghz; {2}-Bit", proc, maxClockSpeedGhz.ToString(), SystemSpecs.returnArchitecture(arch));
+                string proc_FINAL = string.Format("{0} @ {1}ghz; {2}-Bit", proc, maxClockSpeedGhz.ToString(), returnArchitecture(arch));
                 string vid_FINAL = string.Format("{0} {1}GB ({2} MB)", vidCard, totalVidRam_mb / 1024f, totalVidRam_mb);
                 string OS;
                 if (Environment.Is64BitOperatingSystem)
