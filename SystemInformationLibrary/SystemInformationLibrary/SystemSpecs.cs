@@ -66,12 +66,19 @@ namespace SystemInformationLibrary
             }
             private static string GetComponent(string hwclass, string syntax)
             {
-                ManagementObjectSearcher mos = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM " + hwclass);
-                foreach (ManagementObject mj in mos.Get())
+                try
                 {
-                    return mj[syntax].ToString();
+                    ManagementObjectSearcher mos = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM " + hwclass);
+                    foreach (ManagementObject mj in mos.Get())
+                    {
+                        return mj[syntax].ToString();
+                    }
                 }
-                return null;
+                catch (Exception ex)
+                {
+                    Console.WriteLine("ERROR: Error while trying to retrieve {0} for {1}\n\tException: {2}", syntax, hwclass, ex.Message);
+                }
+                return "NULL";
             }
             private static string returnArchitecture(string toDetect)
             {
